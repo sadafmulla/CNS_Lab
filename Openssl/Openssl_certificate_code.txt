@@ -1,0 +1,8 @@
+openssl genrsa -out outputfile.key 2048
+dir
+openssl rsa -in outputfile.key -pubout -out outputfile_public.key
+dir
+openssl req -new -key outputfile.key -out outputfile.csr
+dir
+openssl req -text -in outputfile.csr -noout -verify
+openssl x509 -in outputfile.csr -out outputfile.crt -req -signkey outputfile.key -days 100
